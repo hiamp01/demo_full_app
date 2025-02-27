@@ -12,16 +12,15 @@ ENV appdir=/usr/src/app
 WORKDIR ${appdir}
 
 
-# For Docker layer caching do this BEFORE copying in rest of app
+#Copia paquetes necesarios para cachearlos
 COPY src/package*.json .
 COPY src/*.env .
+
+#Instalacion de npm
 RUN npm install --production --silent
 
-# NPM is done, now copy in the rest of the project to the workdir
+# NPM realizado se copia el resto del proyecto
 COPY src/. .
-
-#Compilacion
-#RUN npm install
 
 #Instruccion inicial
 ENTRYPOINT [ "npm" ]
