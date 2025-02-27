@@ -3,7 +3,7 @@ services:
     image: "nginx:alpine"
     restart: always
     ports:
-      - "80:80"
+      - "8081:80"
       - "443:443"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
@@ -13,6 +13,7 @@ services:
       - custom_app
   custom_app:
     build: .
+    restart: always
     networks:
       - front_end
       - back_end
@@ -23,6 +24,7 @@ services:
     restart: always
     volumes:
       - mongo_db-data:/data
+    #Variables para definir usuario y pass de base de datos
     environment:
       - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}

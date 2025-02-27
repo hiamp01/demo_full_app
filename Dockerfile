@@ -4,11 +4,11 @@ FROM node:current-slim
 #Metadata custom
 LABEL owner="Hector Montecinos"
 LABEL type="node on mongo"
-
+LABEL original="https://github.com/benc-uk/nodejs-demoapp.git"
 #Variable para directorio
 ENV appdir=/usr/src/app
 
-#directorio donde se ejecutara git clone
+#directorio donde se ejecutara la app
 WORKDIR ${appdir}
 
 
